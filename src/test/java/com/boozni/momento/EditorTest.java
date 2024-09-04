@@ -8,16 +8,16 @@ import org.junit.jupiter.api.function.Executable;
 class EditorTest {
 
     private Editor editor;
+    private History history;
 
     @BeforeEach
     public void init() {
-        editor= new Editor();
+        editor = new Editor();
+        history = new History();
     }
 
     @Test
-    public void shouldRestorePreviousState () {
-        History history = new History();
-
+    public void shouldRestorePreviousState() {
         editor.setContent("abc");
         history.push(editor.createState());
 
@@ -32,9 +32,6 @@ class EditorTest {
 
     @Test
     void testMultipleRestores() {
-        Editor editor = new Editor();
-        History history = new History();
-
         editor.setContent("Version 1");
         history.push(editor.createState());
 
